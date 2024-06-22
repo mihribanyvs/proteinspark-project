@@ -7,18 +7,18 @@ services:
       - 8080:8080
       - 7077:7077
     volumes:
-      - $PWD:/mapd-workspace
+      - $PWD:/protein-spark-project
   spark-worker:
     image: jpazzini/mapd-b:spark-worker
     depends_on:
       - spark-master
     volumes:
-      - $PWD:/mapd-workspace
+      - $PWD:/protein-spark-project
     environment:
       - SPARK_WORKER_CORES=1
       - SPARK_WORKER_MEMORY=512m
   jupyter-notebook:
-    image: mihriban/protein-spark:version00
+    image: jpazzini/mapd-b:spark-jupyter
     container_name: jupyter-notebook
     depends_on:
       - spark-master
@@ -26,4 +26,4 @@ services:
       - 4040:4040
       - 1235:8888
     volumes:
-      - $PWD:/mapd-workspace
+      - $PWD:/protein-spark-project
