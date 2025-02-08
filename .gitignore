@@ -10,5 +10,5 @@ ipython_config.py
 
 .DS_Store
 data_all
-
+prot_bert.vec
 
